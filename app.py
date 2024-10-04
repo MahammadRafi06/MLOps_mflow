@@ -12,6 +12,7 @@ import mlflow
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
 import os
+mlflow.set_tracking_uri("http://0.0.0.0:5000/")
 def load_data():
 
     # load the dataset
@@ -150,7 +151,7 @@ def eval_metrics(actual, pred):
 def mlflow_logging(model, X, y, name):
 
      with mlflow.start_run() as run:
-        #mlflow.set_tracking_uri("http://0.0.0.0:5001/")
+        mlflow.set_tracking_uri("http://0.0.0.0:5000/")
         #mlflow.set_tag("run_id", run_id)
         pred = model.predict(X)
         #metrics
