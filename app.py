@@ -12,7 +12,7 @@ import mlflow
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
 import os
-mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+mlflow.set_tracking_uri("databricks")
 def load_data():
 
     # load the dataset
@@ -124,7 +124,7 @@ def tree(X_train, y_train):
 
 
 
-mlflow.set_experiment("Loan_prediction")
+mlflow.set_experiment("/Loan_exp")
 
 # Model evelaution metrics
 def eval_metrics(actual, pred):
@@ -151,7 +151,7 @@ def eval_metrics(actual, pred):
 def mlflow_logging(model, X, y, name):
 
      with mlflow.start_run() as run:
-        mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+        mlflow.set_tracking_uri("databricks")
         #mlflow.set_tag("run_id", run_id)
         pred = model.predict(X)
         #metrics
